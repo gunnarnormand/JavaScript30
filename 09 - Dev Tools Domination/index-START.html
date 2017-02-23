@@ -18,28 +18,76 @@
     }
 
     // Regular
+    console.log('hello');
 
     // Interpolated
+    console.log('Hello I am a %s string!', 'Interpolated');
+    // alternate way with es6 backticks
+    const interpolated = "Interpolated";
+    console.log(`Hello I am a ${interpolated} string!`);
 
     // Styled
+    console.log('%c I am some orange text with blue background', 'color: orange; background: blue;')
 
     // warning!
+    console.warn('Oh No! This is a warning!');
 
     // Error :|
+    console.error('this is a fake error... hehe')
 
     // Info
+    console.info('crocodiles eat 3-4 people per year.');
 
-    // Testing
+    // Testing -- console.assert will only show if something is wrong. 
+    // wont show
+    console.assert(1 === 1, 'that is wrong!');
+    // will show 
+    console.assert(1 === 2, 'that is wrong!');
 
     // clearing
+    // clears the console
+    console.clear();
 
     // Viewing DOM Elements
+    const p = document.querySelector('p');
+
+    console.log(p);
+    // console.dir creates a dropdown 
+    console.dir(p);
 
     // Grouping together
+    dogs.forEach(dog => {
+      
+      // console.group(`${dog.name}`);
+      //or 
+      console.groupCollapsed(`${dog.name}`);
+
+      console.log(`this is ${dog.name} and he is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} years old in dog years`);
+
+      console.groupEnd(`${dog.name}`);
+    
+    });
 
     // counting
 
+    console.count('Gun');
+    console.count('jeff');
+    console.count('Gun');
+    console.count('Gun');
+
     // timing
+    console.time('fetching data');
+
+    fetch('https://api.github.com/users/gunnarnormand')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+    // when u have and array of objects like dog above u can use 
+    console.table(dogs);
 
   </script>
 </body>
