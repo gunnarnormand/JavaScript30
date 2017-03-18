@@ -7,6 +7,31 @@
 </head>
 <body>
 <script>
+
+const pressed = [];
+const secretCode = 'gunnar';
+
+window.addEventListener('keyup', (e) => {
+	console.log(e.key);
+	pressed.push(e.key);
+	pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+	// turns the array of letters into a single string
+	if(pressed.join('').includes(secretCode)) {
+		console.log('DING! DING! DING!')
+		cornify_add();
+	}
+	console.log(pressed);
+});
+
+
+
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
