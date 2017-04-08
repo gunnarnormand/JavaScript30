@@ -182,6 +182,58 @@
     </li>
   </ul>
 <script>
+
+
+// querySelectorAll return a NodeList not an array so we cannot perform map() on it.
+// so we need to turn this into an array using Array.from();
+const timeNodes = Array.from(document.querySelectorAll('[data-time]'));
+// now run .map and get time from each li into an array
+const seconds = timeNodes
+  .map(node => node.dataset.time)
+  .map(timeCode => {
+    const [mins, secs] = timeCode.split(':').map(parseFloat);
+    return (mins * 60) + secs;
+    // console.log(mins, secs);
+  })
+  .reduce((total, vidSeconds) => total + vidSeconds);
+
+  let secondsLeft = seconds;
+  const hours = Math.floor(secondsLeft / 3600);
+  secondsLeft = secondsLeft % 3600;
+
+  const mins = Math.floor(secondsLeft / 60);
+  secondsLeft = secondsLeft % 60;
+
+
+  // heres our answer
+
+  console.log(hours, mins, secondsLeft);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
